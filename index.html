@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <meta name="theme-color" content="#173f2a" />
+  <title>Green Nest Cafe | منوی دیجیتال</title>
+  <style>
+    :root{
+      --cream:#f5f0e6;
+      --cream-2:#eee5d7;
+      --paper:#fbf7ef;
+      --green:#173f2a;
+      --green-2:#24583b;
+      --sage:#809176;
+      --sage-2:#b7c2aa;
+      --gold:#b29258;
+      --ink:#1d231f;
+      --muted:#6d756f;
+      --line:rgba(23,63,42,.13);
+      --shadow:0 18px 50px rgba(30,50,38,.10);
+      --radius:26px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      color:var(--ink);
+      background:
+        radial-gradient(circle at 12% 6%, rgba(128,145,118,.18), transparent 28%),
+        radial-gradient(circle at 94% 14%, rgba(178,146,88,.10), transparent 22%),
+        linear-gradient(180deg,var(--cream),#f7f2e9 58%,#eee7db);
+      font-family: "Vazirmatn","IRANSans","Tahoma",system-ui,-apple-system,sans-serif;
+      min-height:100vh;
+    }
+    a{text-decoration:none;color:inherit}
+    button{font:inherit}
+    .shell{max-width:760px;margin:0 auto;min-height:100vh;padding:18px 16px 90px}
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border:1px solid rgba(178,146,88,.34);
+      background:rgba(251,247,239,.86);
+      backdrop-filter: blur(14px);
+      border-radius:34px;
+      padding:28px 22px 24px;
+      box-shadow:var(--shadow);
+    }
+    .hero:before,.hero:after{
+      content:"";
+      position:absolute;
+      width:170px;height:170px;
+      border-radius:50%;
+      filter:blur(2px);
+      opacity:.16;
+      pointer-events:none;
+    }
+    .hero:before{background:var(--sage);top:-85px;left:-55px}
+    .hero:after{background:var(--gold);bottom:-120px;right:-65px}
+    .brand-row{display:flex;align-items:center;justify-content:space-between;gap:12px;position:relative;z-index:1}
+    .brandmark{
+      width:48px;height:48px;border-radius:16px;
+      display:grid;place-items:center;
+      border:1px solid rgba(178,146,88,.45);
+      color:var(--green);
+      background:rgba(255,255,255,.42);
+      font-size:23px;
+    }
+    .brand{
+      text-align:right;
+      line-height:1;
+    }
+    .brand .en{
+      font-family: Georgia, "Times New Roman", serif;
+      letter-spacing:.14em;
+      font-size:clamp(24px,7vw,40px);
+      color:var(--green);
+      white-space:nowrap;
+    }
+    .brand .sub{
+      margin-top:10px;
+      color:var(--gold);
+      letter-spacing:.32em;
+      font-size:11px;
+      direction:ltr;
+    }
+    .hero-copy{position:relative;z-index:1;margin-top:34px}
+    .eyebrow{color:var(--sage);font-size:12px;letter-spacing:.08em;margin-bottom:8px}
+    h1{margin:0;color:var(--green);font-size:clamp(27px,8vw,42px);line-height:1.35}
+    .hero-copy p{margin:10px 0 0;color:var(--muted);font-size:14px;line-height:1.9}
+    .signature{
+      margin-top:22px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
+      padding:13px 15px;border-radius:18px;
+      background:linear-gradient(135deg,var(--green),var(--green-2));
+      color:#fff;
+    }
+    .signature b{font-size:14px}
+    .signature span{font-size:12px;opacity:.76}
+    .chips{
+      display:flex;gap:9px;overflow-x:auto;padding:18px 2px 10px;
+      scrollbar-width:none;
+      position:sticky;top:0;z-index:20;
+      background:linear-gradient(180deg,rgba(245,240,230,.97) 74%,rgba(245,240,230,0));
+      backdrop-filter:blur(7px);
+    }
+    .chips::-webkit-scrollbar{display:none}
+    .chip{
+      flex:0 0 auto;
+      border:1px solid var(--line);
+      background:rgba(251,247,239,.86);
+      color:var(--green);
+      border-radius:999px;
+      padding:10px 15px;
+      cursor:pointer;
+      transition:.2s ease;
+      box-shadow:0 7px 20px rgba(37,66,49,.04);
+      font-size:13px;
+    }
+    .chip.active,.chip:hover{
+      background:var(--green);color:#fff;border-color:var(--green);
+      transform:translateY(-1px);
+    }
+    .section{margin-top:24px;scroll-margin-top:82px}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:12px;margin-bottom:12px}
+    .section-title{margin:0;color:var(--green);font-size:24px}
+    .section-kicker{font-family:Georgia,serif;color:var(--gold);font-size:12px;letter-spacing:.1em;direction:ltr}
+    .grid{display:grid;grid-template-columns:1fr;gap:10px}
+    .item{
+      position:relative;
+      border:1px solid rgba(23,63,42,.10);
+      background:rgba(251,247,239,.72);
+      border-radius:20px;
+      padding:15px 16px;
+      box-shadow:0 8px 24px rgba(28,55,39,.05);
+      transition:.22s ease;
+      overflow:hidden;
+    }
+    .item:hover{transform:translateY(-2px);box-shadow:0 14px 30px rgba(28,55,39,.08)}
+    .item:after{
+      content:"";position:absolute;right:0;top:0;bottom:0;width:3px;
+      background:linear-gradient(var(--gold),var(--sage));
+      opacity:.6;
+    }
+    .item-top{display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .item-name{font-weight:750;font-size:17px;color:var(--ink)}
+    .item-name.en{direction:ltr;text-align:left;font-family:Georgia,serif;font-weight:600}
+    .item-meta{font-size:12px;color:var(--sage);white-space:nowrap}
+    .item-desc{margin-top:7px;color:var(--muted);font-size:12.5px;line-height:1.85}
+    .star{display:inline-flex;align-items:center;gap:5px;color:var(--gold);font-size:11px;margin-top:7px}
+    .footer{
+      margin-top:34px;
+      text-align:center;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.9;
+    }
+    .footer .line{width:90px;height:1px;background:var(--gold);margin:0 auto 14px;opacity:.6}
+    .top-btn{
+      position:fixed;left:18px;bottom:18px;width:48px;height:48px;border-radius:16px;
+      border:1px solid rgba(255,255,255,.15);background:var(--green);color:#fff;
+      box-shadow:0 12px 30px rgba(23,63,42,.24);display:grid;place-items:center;
+      cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:.2s;
+    }
+    .top-btn.show{opacity:1;transform:none;pointer-events:auto}
+    @media(min-width:640px){
+      .shell{padding-top:28px}
+      .grid{grid-template-columns:1fr 1fr}
+      .hero{padding:34px 30px 30px}
+    }
+  </style>
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div class="brand-row">
+        <div class="brand">
+          <div class="en">GREEN NEST</div>
+          <div class="sub">CAFE</div>
+        </div>
+        <div class="brandmark" aria-label="Green Nest">❦</div>
+      </div>
+
+      <div class="hero-copy">
+        <div class="eyebrow">منوی دیجیتال</div>
+        <h1>یه انتخاب خوب، حال خوب می‌سازه.</h1>
+        <p>نوشیدنی موردعلاقه‌ات رو پیدا کن؛ دسته‌ها رو لمس کن و سریع بین آیتم‌ها بچرخ.</p>
+        <div class="signature">
+          <div>
+            <b>Green Nest Selection</b><br>
+            <span>آیتم‌های اختصاصی کافه با علامت ✦ مشخص شده‌اند.</span>
+          </div>
+          <div style="font-size:22px">✦</div>
+        </div>
+      </div>
+    </section>
+
+    <nav class="chips" aria-label="دسته‌بندی منو">
+      <button class="chip active" data-target="coffee">قهوه</button>
+      <button class="chip" data-target="ice-coffee">آیس کافی</button>
+      <button class="chip" data-target="hot">هات درینک</button>
+      <button class="chip" data-target="tea">چای</button>
+      <button class="chip" data-target="ice-drink">آیس درینک</button>
+    </nav>
+
+    <section class="section" id="coffee">
+      <div class="section-head">
+        <h2 class="section-title">قهوه</h2>
+        <div class="section-kicker">COFFEE</div>
+      </div>
+      <div class="grid">
+        <article class="item"><div class="item-top"><div class="item-name">اسپرسو</div><div class="item-meta">Coffee</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">آمریکانو</div><div class="item-meta">Coffee</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">لاته</div><div class="item-meta">Milk Coffee</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">موکا</div><div class="item-meta">Chocolate</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">ترک</div><div class="item-meta">Traditional</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">کورتادو</div><div class="item-meta">Milk Coffee</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">کاپوچینو</div><div class="item-meta">Milk Coffee</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">کارامل ماکیاتو</div><div class="item-meta">Caramel</div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="ice-coffee">
+      <div class="section-head">
+        <h2 class="section-title">آیس کافی</h2>
+        <div class="section-kicker">ICE COFFEE</div>
+      </div>
+      <div class="grid">
+        <article class="item">
+          <div class="item-top"><div class="item-name">آیس لاته</div><div class="item-meta">Cold</div></div>
+          <div class="item-desc">طعم‌ها: شکلات، نارگیل، کارامل، فندق</div>
+        </article>
+        <article class="item"><div class="item-top"><div class="item-name">آیس آمریکانو</div><div class="item-meta">Cold</div></div></article>
+        <article class="item">
+          <div class="item-top"><div class="item-name en">ice Nest</div><div class="item-meta">Signature</div></div>
+          <div class="item-desc">استرابری، بیسکویت</div>
+          <div class="star">✦ انتخاب اختصاصی Green Nest</div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="hot">
+      <div class="section-head">
+        <h2 class="section-title">هات درینک</h2>
+        <div class="section-kicker">HOT DRINK</div>
+      </div>
+      <div class="grid">
+        <article class="item"><div class="item-top"><div class="item-name">هات چاکلت</div><div class="item-meta">Hot</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">ماسالا</div><div class="item-meta">Spiced</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">بونتی چاکلت</div><div class="item-meta">Chocolate</div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="tea">
+      <div class="section-head">
+        <h2 class="section-title">چای و دمنوش</h2>
+        <div class="section-kicker">TEA</div>
+      </div>
+      <div class="grid">
+        <article class="item"><div class="item-top"><div class="item-name">چای سیاه</div><div class="item-meta">Tea</div></div></article>
+        <article class="item">
+          <div class="item-top"><div class="item-name en">Nest tea</div><div class="item-meta">Signature</div></div>
+          <div class="star">✦ انتخاب اختصاصی Green Nest</div>
+        </article>
+        <article class="item"><div class="item-top"><div class="item-name">گل گاوزبان</div><div class="item-meta">Herbal</div></div></article>
+      </div>
+    </section>
+
+    <section class="section" id="ice-drink">
+      <div class="section-head">
+        <h2 class="section-title">آیس درینک</h2>
+        <div class="section-kicker">ICE DRINK</div>
+      </div>
+      <div class="grid">
+        <article class="item"><div class="item-top"><div class="item-name">موهیتو</div><div class="item-meta">Fresh</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">لیموناد</div><div class="item-meta">Fresh</div></div></article>
+        <article class="item"><div class="item-top"><div class="item-name">جینجر لیموناد</div><div class="item-meta">Ginger</div></div></article>
+        <article class="item">
+          <div class="item-top"><div class="item-name">آیس تی</div><div class="item-meta">Cold Tea</div></div>
+          <div class="item-desc">طعم‌ها: تروپیکال، لیمون</div>
+        </article>
+        <article class="item">
+          <div class="item-top"><div class="item-name en">Nest Drink</div><div class="item-meta">Signature</div></div>
+          <div class="star">✦ انتخاب اختصاصی Green Nest</div>
+        </article>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <div class="line"></div>
+      <strong style="color:var(--green)">GREEN NEST CAFE</strong><br>
+      منوی دیجیتال — طراحی‌شده برای موبایل
+    </footer>
+  </main>
+
+  <button class="top-btn" aria-label="بازگشت به بالا">↑</button>
+
+  <script>
+    const chips = [...document.querySelectorAll('.chip')];
+    chips.forEach(btn => btn.addEventListener('click', () => {
+      document.getElementById(btn.dataset.target).scrollIntoView({behavior:'smooth', block:'start'});
+    }));
+
+    const sections = [...document.querySelectorAll('.section')];
+    const obs = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          chips.forEach(c => c.classList.toggle('active', c.dataset.target === entry.target.id));
+        }
+      });
+    }, {rootMargin:'-34% 0px -58% 0px', threshold:0});
+    sections.forEach(s => obs.observe(s));
+
+    const topBtn = document.querySelector('.top-btn');
+    addEventListener('scroll', () => topBtn.classList.toggle('show', scrollY > 450));
+    topBtn.addEventListener('click', () => scrollTo({top:0,behavior:'smooth'}));
+  </script>
+</body>
+</html>
